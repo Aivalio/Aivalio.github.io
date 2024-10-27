@@ -1,7 +1,7 @@
 /* File: calc_advanced1.c */
 #include <stdio.h>
 int main() {
-long long in1, in2, sum;
+long long int in1, in2, sum;
 
 printf("Εισάγετε έναν ακέραιο αριθμό:");
 scanf("%lld, &in1");
