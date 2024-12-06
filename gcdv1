@@ -27,9 +27,13 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    // Μετατροπή των αριθμών σε απόλυτες τιμές για να διασφαλίσουμε ότι είναι θετικοί
+    num1 = llabs(num1);
+    num2 = llabs(num2);
+
     // Υπολογισμός του ΜΚΔ
     long long result = gcd(num1, num2);
-
+    
     // Εκτύπωση του αποτελέσματος
     printf("gcd(%lld, %lld) = %lld\n", num1, num2, result);
 
