@@ -46,14 +46,14 @@ int main(void) {
     }
 
     // Check 
-    printf("Εκτελείται ο έλεγχος υποσυνόλου...\n");
+    printf("Checking is being conducted...\n");
     int found = hasZeroSubsetSum(numbers, size, 0, 0);
 
     // Print the result in each case
     if (found)
-        printf("Υπάρχει τουλάχιστον ένα υποσύνολο με άθροισμα 0!\n");
+        printf("There is a subset with sum=0\n");
     else
-        printf("Δεν βρέθηκε υποσύνολο με άθροισμα 0.\n");
+        printf("There is no such subset with sum=0\n");
 
     // Free the memory allocated by me
     free(numbers);
