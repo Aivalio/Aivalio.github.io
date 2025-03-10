@@ -58,3 +58,4 @@ int main(void) {
     // Free the memory allocated by me
     free(numbers);
     return 0; // Successful termination of the program
+}
