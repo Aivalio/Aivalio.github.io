@@ -22,39 +22,39 @@ int main(void) {
     int size;
     int *numbers;
 
-    // Ζητάμε από τον χρήστη το μέγεθος του πίνακα
-    printf("Δώστε τον αριθμό των στοιχείων: ");
-    scanf("%d", &size);
+    // Ask the user to enter the number of elements
+    printf("Please give me the number of elements: ");
+    int result=scanf("%d", &size);
 
-    if (size <= 0) {
-        printf("Μη έγκυρος αριθμός στοιχείων.\n");
+    if(result=EOF || result!=1) {
+        fprintf(stderr, "No valid number provided\n");
         return 1;
     }
 
-    // Δέσμευση μνήμης για τον πίνακα ακεραίων
+
+    // Memory allocation, using malloc, for the making and filling of the array
     numbers = (int *)malloc(size * sizeof(int));
     if (numbers == NULL) {
-        printf("Σφάλμα: Αποτυχία δέσμευσης μνήμης!\n");
+        fprintf(stderr, "Memory allocation failed due to exhaustion\n");
         return 1;
     }
 
-    // Εισαγωγή στοιχείων από τον χρήστη
-    printf("Εισάγετε %d ακέραιους αριθμούς:\n", size);
-    for (int i = 0; i < size; i++) {
+    // The user inserts elements with a loop
+    printf("Please fill up the array with numbers of yours: ");
+    for(int i = 0; i < size; i++) {
         scanf("%d", &numbers[i]);
     }
 
-    // Εκτέλεση ελέγχου για ύπαρξη υποσυνόλου με άθροισμα 0
+    // Check 
     printf("Εκτελείται ο έλεγχος υποσυνόλου...\n");
     int found = hasZeroSubsetSum(numbers, size, 0, 0);
 
-    // Εμφάνιση αποτελέσματος
+    // Print the result in each case
     if (found)
         printf("Υπάρχει τουλάχιστον ένα υποσύνολο με άθροισμα 0!\n");
     else
         printf("Δεν βρέθηκε υποσύνολο με άθροισμα 0.\n");
 
-    // Αποδέσμευση μνήμης
+    // Free the memory allocated by me
     free(numbers);
-    return 0; // Επιτυχής έξοδος
-}
+    return 0; // Successful termination of the program
