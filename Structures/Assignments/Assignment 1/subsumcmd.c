@@ -1,53 +1,60 @@
 /* File: subsum.c */
-// Code author: Nikos Aivaliotis
+// Code author: Nikos Aivaliotis (modified for readability)
 
 #include <stdio.h>
 #include <stdlib.h>
 
 // Αναδρομική συνάρτηση για τον έλεγχο ύπαρξης μη κενού υποσυνόλου με άθροισμα 0
-int subsetSum(int *array, int n, int sum, int count) {
-    if (sum == 0 && count > 0) // Βρήκαμε υποσύνολο με άθροισμα 0 (μη κενό)
+int hasZeroSubsetSum(int *numbers, int size, int sum, int count) {
+    if (sum == 0 && count > 0) // Αν βρήκαμε μη κενό υποσύνολο με άθροισμα 0
         return 1;
-    if (n == 0) // Αν εξαντλήσαμε τα στοιχεία και δεν βρήκαμε λύση
+    if (size == 0) // Αν εξαντλήσαμε τα στοιχεία χωρίς επιτυχία
         return 0;
 
-    // Εξετάζουμε δύο περιπτώσεις: να συμπεριλάβουμε ή να αγνοήσουμε το τελευταίο στοιχείο
-    return subsetSum(array, n - 1, sum, count) || subsetSum(array, n - 1, sum - array[n - 1], count + 1);
+    // Δοκιμάζουμε είτε να αγνοήσουμε είτε να συμπεριλάβουμε το τελευταίο στοιχείο
+    int exclude = hasZeroSubsetSum(numbers, size - 1, sum, count);
+    int include = hasZeroSubsetSum(numbers, size - 1, sum - numbers[size - 1], count + 1);
+
+    return exclude || include;
 }
 
 int main(void) {
-    int terms;
-    int *array;
+    int size;
+    int *numbers;
 
     // Ζητάμε από τον χρήστη το μέγεθος του πίνακα
     printf("Δώστε τον αριθμό των στοιχείων: ");
-    scanf("%d", &terms);
+    scanf("%d", &size);
 
-    if (terms <= 0) {
-        fprintf(stderr, "Μη έγκυρος αριθμός στοιχείων.\n");
+    if (size <= 0) {
+        printf("Μη έγκυρος αριθμός στοιχείων.\n");
         return 1;
     }
 
     // Δέσμευση μνήμης για τον πίνακα ακεραίων
-    array = (int *)malloc(terms * sizeof(int));
-    if (array == NULL) {
-        fprintf(stderr, "Αποτυχία δέσμευσης μνήμης\n");
+    numbers = (int *)malloc(size * sizeof(int));
+    if (numbers == NULL) {
+        printf("Σφάλμα: Αποτυχία δέσμευσης μνήμης!\n");
         return 1;
     }
 
     // Εισαγωγή στοιχείων από τον χρήστη
-    printf("Εισάγετε %d ακέραιους αριθμούς:\n", terms);
-    for (int i = 0; i < terms; i++) {
-        scanf("%d", &array[i]);
+    printf("Εισάγετε %d ακέραιους αριθμούς:\n", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &numbers[i]);
     }
 
-    // Κλήση της αναδρομικής συνάρτησης
-    if (subsetSum(array, terms, 0, 0))
-        printf("Υπάρχει υποσύνολο με άθροισμα 0\n");
+    // Εκτέλεση ελέγχου για ύπαρξη υποσυνόλου με άθροισμα 0
+    printf("Εκτελείται ο έλεγχος υποσυνόλου...\n");
+    int found = hasZeroSubsetSum(numbers, size, 0, 0);
+
+    // Εμφάνιση αποτελέσματος
+    if (found)
+        printf("Υπάρχει τουλάχιστον ένα υποσύνολο με άθροισμα 0!\n");
     else
-        printf("Δεν υπάρχει υποσύνολο με άθροισμα 0\n");
+        printf("Δεν βρέθηκε υποσύνολο με άθροισμα 0.\n");
 
     // Αποδέσμευση μνήμης
-    free(array);
-    return 0; // Επιτυχής τερματισμός προγράμματος
+    free(numbers);
+    return 0; // Επιτυχής έξοδος
 }

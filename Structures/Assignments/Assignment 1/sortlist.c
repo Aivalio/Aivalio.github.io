@@ -39,18 +39,18 @@ List sortList(List head) {
     List sorted = NULL;
     
     while (head) {
-        List curr = head;
+        List current = head;
         head = head->next;
 
-        if (!sorted || curr->value < sorted->value) { // Insert in the beginning
-            curr->next = sorted;
-            sorted = curr;
+        if (!sorted || current->value < sorted->value) { // Insert in the beginning
+            current->next = sorted;
+            sorted = current;
         } else { // Insert in te proper position
             List temp = sorted;
-            while (temp->next && temp->next->value < curr->value)
+            while (temp->next && temp->next->value < current->value)
                 temp = temp->next;
-            curr->next = temp->next;
-            temp->next = curr;
+            current->next = temp->next;
+            temp->next = current;
         }
     }
     return sorted;
