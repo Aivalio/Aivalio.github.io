@@ -5,17 +5,20 @@
 
 // Definition of a list node and a pointer to it
 typedef struct listnode {
+    
     int value;
     struct listnode* next;
 } *List;
 
 // Function to insert a node at the beginning of my list, using a pointer to pointer to traverse the list
 void insert_front(List *head, int new_value) {
+    
     List new_node = (List)malloc(sizeof(struct listnode));
     if (new_node == NULL) {
         fprintf(stderr, "Failed to allocate memory\n");
         exit(EXIT_FAILURE); //If memory allocation fails, the program exits and gives an error message
     }
+    
     new_node->value = new_value; //The value of the new head is that of the old one
     new_node->next = *head; //The new node points to the old head
     *head = new_node; //Now the head of the list is the new node
@@ -23,6 +26,7 @@ void insert_front(List *head, int new_value) {
 
 // Fucntion to print a list
 void printList(List head) {
+    
     while (head!=NULL) {
         printf("%d -> ", head->value);
         head = head->next;
@@ -32,6 +36,7 @@ void printList(List head) {
 
 // Fucntion to sort a list with Insertion Sort
 List sortList(List head) {
+    
     if (head!=NULL || head->next!=NULL) {
         return head;
     }  // If the list has one or zero elements, then it is already sorted
@@ -78,6 +83,7 @@ List mergeSortedLists(List l1, List l2) {
 }
 
 int main(void) {
+    
     List list1 = NULL, list2 = NULL;
 
     // I create two lists

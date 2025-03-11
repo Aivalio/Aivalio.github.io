@@ -19,6 +19,7 @@ int hasZeroSubsetSum(int *numbers, int size, int sum, int count) {
 }
 
 int main(void) {
+    
     int size;
     int *numbers;
 
