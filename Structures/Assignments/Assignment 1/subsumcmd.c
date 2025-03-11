@@ -1,5 +1,5 @@
 /* File: subsum.c */
-// Code author: Nikos Aivaliotis (modified for readability)
+// Code author: Nikos Aivaliotis
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +15,7 @@ int hasZeroSubsetSum(int *numbers, int size, int sum, int count) {
     int exclude = hasZeroSubsetSum(numbers, size - 1, sum, count);
     int include = hasZeroSubsetSum(numbers, size - 1, sum - numbers[size - 1], count + 1);
 
-    return exclude || include;
+    return exclude || include; // Return which case is true (or either of them)
 }
 
 int main(void) {
@@ -35,13 +35,13 @@ int main(void) {
     numbers = (int *)malloc(size * sizeof(int));
     if (numbers == NULL) {
         fprintf(stderr, "Memory allocation failed due to exhaustion\n");
-        return 1;
+        return 1; // Exit with code 1
     }
 
     // The user inserts elements with a loop
     printf("Please fill up the array with numbers of yours: ");
     for (int i = 0; i < size; i++) {
-        scanf("%d", &numbers[i]);
+        scanf("%d", &numbers[i]); // User-given numbers
     }
 
     // Check for a subset with sum 0
