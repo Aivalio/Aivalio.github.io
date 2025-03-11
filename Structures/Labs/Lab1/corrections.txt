@@ -1,0 +1,9 @@
+Διορθώσεις & Συμπληρώσεις
+
+✔ Ολοκληρώθηκε το struct Point (περιλαμβάνει x, y).
+✔ Ορθός ορισμός typedef struct triangle { ... } Triangle;
+✔ Η point_move_horizontally πλέον δέχεται δείκτη (Point* p) ώστε να μπορεί να αλλάξει το σημείο σωστά.
+✔ Το point_move_horizontally(*a, 5); άλλαξε σε point_move_horizontally(a, 5); για σωστή διαχείριση δείκτη.
+✔ Ολοκληρώθηκαν οι βρόχοι for (int i = 0; i < 3; i++) στις συναρτήσεις του τριγώνου.
+✔ Δημιουργία του Point γίνεται δυναμικά με malloc(sizeof(Point)).
+✔ Προστέθηκε σωστή αποδέσμευση μνήμης με free().
