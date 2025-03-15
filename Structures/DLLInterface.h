@@ -1,42 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Δομή κόμβου της λίστας
-typedef struct Node {
-    int data;
-    struct Node* next;
-    struct Node* prev;
-} Node;
+// Declaration of a list node and a variable of such type
+typedef struct listnode {
+    int value;
+    struct listnode* next;
+    struct listnode* prev;
+} ListNode;
 
-// Δομή της λίστας
+// Declaration of a doubly-linked list and a variable of such type
 typedef struct {
-    Node* head;
-    Node* tail;
-    int size;
-} DoublyLinkedList;
+    ListNode* Head;
+    ListNode* Tail;
+} DoubleLink;
 
-// Δημιουργία λίστας
-DoublyLinkedList* Create();
+// List creation
+DoubleLink* Create();
 
-// Πληροφορίες λίστας
-int Size(DoublyLinkedList* list);
-int IsEmpty(DoublyLinkedList* list);
+// List information
+int Size(DoubleLink* list);
+int IsEmpty(DoubleLink* list);
 
-// Πρόσβαση σε στοιχεία
-int GetFirst(DoublyLinkedList* list);
-int GetLast(DoublyLinkedList* list);
-Node* GetNode(DoublyLinkedList* list, int i);
-int GetPrev(Node* node);
-int GetNext(Node* node);
+// Accessing elements
+int GetFirst(DoubleLink* list);
+int GetLast(DoubleLink* list);
+ListNode* GetNode(DoubleLink* list, int i);
+int GetPrev(ListNode* node);
+int GetNext(ListNode* node);
 
-// Προσθήκη κόμβων
-void AddBefore(DoublyLinkedList* list, Node* node, int i);
-void AddAfter(DoublyLinkedList* list, Node* node, int i);
-void AddFirst(DoublyLinkedList* list, int i);
-void AddLast(DoublyLinkedList* list, int i);
+// Adding nodes
+void AddBefore(DoubleLink* list, ListNode* node, int i);
+void AddAfter(DoubleLink* list, ListNode* node, int i);
+void AddFirst(DoubleLink* list, int i);
+void AddLast(DoubleLink* list, int i);
 
-// Διαγραφή κόμβων
-void Remove(DoublyLinkedList* list, int i);
+// Removing nodes
+void Remove(DoubleLink* list, int i);
 
-// Εκτύπωση λίστας
-void Print(DoublyLinkedList* list);
+// Printing list
+void Print(DoubleLink* list);
+
