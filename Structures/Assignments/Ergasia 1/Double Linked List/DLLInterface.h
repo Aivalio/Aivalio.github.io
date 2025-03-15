@@ -34,4 +34,8 @@ int GetFirst
 int GetLast
 int GetPrev 
 int GetNext
+<<<<<<< HEAD
 ListNode*GetNode
+=======
+ListNode*GetNode
+>>>>>>> a18830ab723d456b4a33c74254188715049b7e48
