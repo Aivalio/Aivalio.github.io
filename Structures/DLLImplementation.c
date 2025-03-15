@@ -1,164 +1,160 @@
+
+    #include <stdio.h>
+#include <stdlib.h>
+
 #include "DoublyLinkedList.h"
 
-// Δημιουργία κενής λίστας
-DoublyLinkedList* Create() {
-    DoublyLinkedList* list = (DoublyLinkedList*)malloc(sizeof(DoublyLinkedList));
+// List creation
+DoubleLink* Create() {
+    DoubleLink* list = (DoubleLink*)malloc(sizeof(DoubleLink));
     if (list == NULL) {
-        printf("Σφάλμα: Αδυναμία κατανομής μνήμης!\n");
+        printf("Error: Memory allocation failed!\n");
         exit(1);
     }
-    list->head = NULL;
-    list->tail = NULL;
-    list->size = 0;
+    list->Head = NULL;
+    list->Tail = NULL;
     return list;
 }
 
-// Επιστροφή μεγέθους λίστας
-int Size(DoublyLinkedList* list) {
-    return list->size;
-}
-
-// Έλεγχος αν η λίστα είναι κενή
-int IsEmpty(DoublyLinkedList* list) {
-    return (list->size == 0);
-}
-
-// Επιστροφή του πρώτου στοιχείου
-int GetFirst(DoublyLinkedList* list) {
-    if (list == NULL || list->head == NULL) {
-        printf("Σφάλμα: Η λίστα είναι κενή!\n");
-        exit(1);
-    }
-    return list->head->data;
-}
-
-// Επιστροφή του τελευταίου στοιχείου
-int GetLast(DoublyLinkedList* list) {
-    if (list == NULL || list->tail == NULL) {
-        printf("Σφάλμα: Η λίστα είναι κενή!\n");
-        exit(1);
-    }
-    return list->tail->data;
-}
-
-// Επιστροφή δείκτη στον πρώτο κόμβο που περιέχει το i
-Node* GetNode(DoublyLinkedList* list, int i) {
-    if (list == NULL) return NULL;
-    Node* current = list->head;
+// List information
+int Size(DoubleLink* list) {
+    int count = 0;
+    ListNode* current = list->Head;
     while (current != NULL) {
-        if (current->data == i) return current;
+        count++;
+        current = current->next;
+    }
+    return count;
+}
+
+int IsEmpty(DoubleLink* list) {
+    return (list->Head == NULL);
+}
+
+// Accessing elements
+int GetFirst(DoubleLink* list) {
+    if (list == NULL || list->Head == NULL) {
+        printf("Error: The list is empty!\n");
+        exit(1);
+    }
+    return list->Head->value;
+}
+
+int GetLast(DoubleLink* list) {
+    if (list == NULL || list->Tail == NULL) {
+        printf("Error: The list is empty!\n");
+        exit(1);
+    }
+    return list->Tail->value;
+}
+
+ListNode* GetNode(DoubleLink* list, int i) {
+    if (list == NULL) return NULL;
+    ListNode* current = list->Head;
+    while (current != NULL) {
+        if (current->value == i) return current;
         current = current->next;
     }
     return NULL;
 }
 
-// Επιστροφή προηγούμενου στοιχείου από έναν κόμβο
-int GetPrev(Node* node) {
+int GetPrev(ListNode* node) {
     if (node == NULL || node->prev == NULL) {
-        printf("Σφάλμα: Δεν υπάρχει προηγούμενο στοιχείο!\n");
+        printf("Error: No previous element!\n");
         exit(1);
     }
-    return node->prev->data;
+    return node->prev->value;
 }
 
-// Επιστροφή επόμενου στοιχείου από έναν κόμβο
-int GetNext(Node* node) {
+int GetNext(ListNode* node) {
     if (node == NULL || node->next == NULL) {
-        printf("Σφάλμα: Δεν υπάρχει επόμενο στοιχείο!\n");
+        printf("Error: No next element!\n");
         exit(1);
     }
-    return node->next->data;
+    return node->next->value;
 }
 
-// Εισαγωγή κόμβου πριν από έναν συγκεκριμένο κόμβο
-void AddBefore(DoublyLinkedList* list, Node* node, int i) {
+// Adding nodes
+void AddBefore(DoubleLink* list, ListNode* node, int i) {
     if (list == NULL || node == NULL) return;
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    newNode->data = i;
+    ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
+    newNode->value = i;
     newNode->prev = node->prev;
     newNode->next = node;
     
     if (node->prev != NULL) node->prev->next = newNode;
-    else list->head = newNode;
+    else list->Head = newNode;
     
     node->prev = newNode;
-    list->size++;
 }
 
-// Εισαγωγή κόμβου μετά από έναν συγκεκριμένο κόμβο
-void AddAfter(DoublyLinkedList* list, Node* node, int i) {
+void AddAfter(DoubleLink* list, ListNode* node, int i) {
     if (list == NULL || node == NULL) return;
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    newNode->data = i;
+    ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
+    newNode->value = i;
     newNode->next = node->next;
     newNode->prev = node;
     
     if (node->next != NULL) node->next->prev = newNode;
-    else list->tail = newNode;
+    else list->Tail = newNode;
     
     node->next = newNode;
-    list->size++;
 }
 
-// Εισαγωγή στην αρχή της λίστας
-void AddFirst(DoublyLinkedList* list, int i) {
+void AddFirst(DoubleLink* list, int i) {
     if (list == NULL) return;
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    newNode->data = i;
-    newNode->next = list->head;
+    ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
+    newNode->value = i;
+    newNode->next = list->Head;
     newNode->prev = NULL;
 
-    if (list->head != NULL) list->head->prev = newNode;
-    else list->tail = newNode;
+    if (list->Head != NULL) list->Head->prev = newNode;
+    else list->Tail = newNode;
 
-    list->head = newNode;
-    list->size++;
+    list->Head = newNode;
 }
 
-// Εισαγωγή στο τέλος της λίστας
-void AddLast(DoublyLinkedList* list, int i) {
+void AddLast(DoubleLink* list, int i) {
     if (list == NULL) return;
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    newNode->data = i;
+    ListNode* newNode = (ListNode*)malloc(sizeof(ListNode));
+    newNode->value = i;
     newNode->next = NULL;
-    newNode->prev = list->tail;
+    newNode->prev = list->Tail;
 
-    if (list->tail != NULL) list->tail->next = newNode;
-    else list->head = newNode;
+    if (list->Tail != NULL) list->Tail->next = newNode;
+    else list->Head = newNode;
 
-    list->tail = newNode;
-    list->size++;
+    list->Tail = newNode;
 }
 
-// Αφαίρεση όλων των κόμβων με συγκεκριμένη τιμή
-void Remove(DoublyLinkedList* list, int i) {
+// Removing nodes
+void Remove(DoubleLink* list, int i) {
     if (list == NULL) return;
-    Node* current = list->head;
+    ListNode* current = list->Head;
     
     while (current != NULL) {
-        if (current->data == i) {
-            Node* toDelete = current;
+        if (current->value == i) {
+            ListNode* toDelete = current;
             if (current->prev != NULL) current->prev->next = current->next;
-            else list->head = current->next;
+            else list->Head = current->next;
 
             if (current->next != NULL) current->next->prev = current->prev;
-            else list->tail = current->prev;
+            else list->Tail = current->prev;
 
             current = current->next;
             free(toDelete);
-            list->size--;
         } else {
             current = current->next;
         }
     }
 }
 
-// Εκτύπωση της λίστας
-void Print(DoublyLinkedList* list) {
+// Printing list
+void Print(DoubleLink* list) {
     if (list == NULL) return;
-    Node* current = list->head;
+    ListNode* current = list->Head;
     while (current != NULL) {
-        printf("%d ", current->data);
+        printf("%d ", current->value);
         current = current->next;
     }
     printf("\n");
