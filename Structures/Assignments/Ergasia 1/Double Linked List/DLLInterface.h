@@ -21,20 +21,20 @@ typedef struct {
 void print(DoubleLink*); // Function to print the list
 int size(DoubleLink*); // Function to calculate the size of the list
 int Empty(DoubleLink*); // Function to check whether the list is empty or not
-int Remove(DoubleLink*, int ); // Function to remove a node from th list
+void Remove(DoubleLink*, int ); // Function to remove a node from th list
 
 // Functions to add a node to the list
-void AddBefore
-void AddAfter
-void AddLast
-void AddFirst
+void AddBefore(DoubleLink*, ListNode*, int);
+void AddAfter(DoubleLink* ,ListNode*, int);
+void AddLast(DoubleLink*, int) // Function to add a node at the end of the list
+void AddFirst(DoubleLink*, int) // Function to add a node at the beginning of the list
 
 // Functions to access and control the elements of the list
-int GetFirst(DoubleLink*)
-int GetLast(DoubleLink*)
-int GetPrev(ListNode*)
-int GetNext(ListNode*)
-ListNode*GetNode(DoubleLink*, int )
+int GetFirst(DoubleLink*);
+int GetLast(DoubleLink*);
+int GetPrev(ListNode*);
+int GetNext(ListNode*);
+ListNode*GetNode(DoubleLink*, int);
 
 // Function to create a list
-DoubleLink*Create(void)
+DoubleLink*Create(void);

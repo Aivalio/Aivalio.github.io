@@ -86,6 +86,7 @@ void Remove(DoubleLink* List, int i) {
             current = current->next;
         }
     }
+    return;
 }
 
 // Function to get the element of the first node
@@ -96,7 +97,7 @@ int GetFirtst(DoubleLink* List) {
         return -1; // Return an error flag 
     } else {
 
-        return List->Head->value;
+        return List->Head->value; // Returns the value of the Head
     }
 }
 
@@ -108,7 +109,7 @@ int GetLast(DoubleLink* List) {
         return -1; // Return an error flag 
     } else {
 
-        return List->Tail->value;
+        return List->Tail->value; // Returns the value of the Tail
     }
 }
 
@@ -120,7 +121,7 @@ int GetPrev(ListNode* Node) {
         return -1; // Return an error flag 
     } else {
 
-        return Node->prev->value;
+        return Node->prev->value; // Returns the value of the previous node
     }
 }
 
@@ -132,7 +133,7 @@ int GetNext(ListNode* Node) {
         return -1; // Return an error flag 
     } else {
 
-        return Node->next->value;
+        return Node->next->value; //Returns the value of the next node
     }
 }
 
@@ -141,21 +142,108 @@ ListNode* GetNode(DoubleLink* List, int index) {
 
     if (List == NULL || List->Head == NULL || index < 0) {
         fprintf(stderr, "Invalid list or index\n");
-        return NULL;
+        return NULL; // If the list or the index are invalid, the function terminates and outputs a message
     } else {
 
-        ListNode*temp=List->Head;
-        int i=0;
+        ListNode*temp=List->Head; // Initialize a pointer to List, which points to the Head
+        int i=0; // Variable to traverse the nodes of the list
 
         do {
 
             if(i==index) {
-                return temp;
+                return temp; // If the comparison succeeds, the prefered node is returned
             }
-            temp=temp->next;
-            i++
-        } while(temp!=NULL)
+            temp=temp->next; // The pointer moves on
+            i++; // The variable grows
+        } while(temp!=NULL) // Necessary to execute the loop
     }
 
-    return NULL
+    return NULL;
 }
+
+// Function to add an element at the beginning of the list
+void AddFirst(DoubleLink*List, int data) {
+
+    ListNode*new_node=(ListNode*)malloc(sizeof(ListNode)); // Memory allocation to create a new node
+    if(new_node==NULL) {
+        fprintf(stderr, "Failed to allocate memory\n");
+        return NULL; // Checking the outcome of malloc
+    }
+
+    new_node->value; 
+    new_node->next=List->Head; // The new node's next node is the Head
+    new_node->prev=NULL; // The new node's previous node is NULL
+
+    if(List->Head!=NULL) {
+
+        List->Head->prev=new_node;
+    }
+
+    List->Head=new_node; // The new node now becomes the new Head
+    
+}
+
+void AddLast(DoubleLink*List, int data) {
+
+    ListNode*new_node=(ListNode*)malloc(sizeof(ListNode)); // Memory allocation for the creation of a new node
+    if(new_node==NULL) {
+        fprintf(stderr, "Failed to allocate memory\n");
+        return NULL; // Checking the malloc outcome
+    }
+
+    new_node->value=data;
+    new_node->next=NULL; // The new node's next node is NULL
+    new_node->prev=List->Tail; // The new node's previous node is the Tail
+    
+    if(List->Tail!=NULL) {
+        
+        List->Tail->next=new_node
+    }
+
+    List->Tail=new_node; // The new node is the new Tail of the list
+
+}
+
+// Adding nodes
+void AddBefore(DoubleLink* List, ListNode* Node, int data) {
+    
+    if (List == NULL || Node == NULL) {
+        fprintf(stderr, "Function termination\n");
+        return; // Initial checks for the function
+    }
+    ListNode* new_node = (ListNode*)malloc(sizeof(ListNode)); // Memory allocation using malloc
+    if(new_node==NULL) {
+        fprintf(stderr, "Failed to allocate memory\n");
+        return NULL; // Malloc outcome check
+    }
+    new_node->value = data;
+    new_node->prev = Node->prev; // The new node's previous node is the previous node of Node
+    new_node->next = Node; // The Node is the new's node next node
+    
+    if (node->prev != NULL) node->prev->next = new_node;
+    
+    node->prev = new_node;
+}
+
+void AddAfter(DoubleLink* List, ListNode* Node, int data) {
+    
+    if (List == NULL || Node == NULL) {
+        fprintf(stderr, "Function termination\n");
+        return; // Initial function checks
+    }
+    
+    ListNode* new_node = (ListNode*)malloc(sizeof(ListNode)); // Memory allocation
+    if(new_node==NULL) {
+        fprintf(stderr, "Failed to allocate memory\n");
+        return NULL;
+    }
+    
+    new_node->value = data;
+    new_node->next = Node->next; // The new nodes's next node is the next node of Node
+    new_node->prev = Node; // The previous node of the new node is the Node
+    
+    if (Node->next != NULL) Node->next->prev = new_node;
+    
+    node->next = new_node;
+}
+
