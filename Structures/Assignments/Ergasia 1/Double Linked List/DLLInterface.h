@@ -20,8 +20,8 @@ typedef struct {
 // Basic functions to handle a doubly-linked list
 void print(DoubleLink*); // Function to print the list
 int size(DoubleLink*); // Function to calculate the size of the list
-int Empty(DoubleLink*); // Function to checj whether the list is empty or not
-int Remove(DoubleLink*, int); // Function to remove a node from th list
+int Empty(DoubleLink*); // Function to check whether the list is empty or not
+int Remove(DoubleLink*, int ); // Function to remove a node from th list
 
 // Functions to add a node to the list
 void AddBefore
@@ -30,12 +30,11 @@ void AddLast
 void AddFirst
 
 // Functions to access and control the elements of the list
-int GetFirst(DoubleLink*List)
-int GetLast(DoubleLink*List)
-int GetPrev(ListNode*Node)
-int GetNext(ListNode*Node)
-ListNode*GetNode(DoubleLink*List, int data)
-ListNode*GetNode(DoubleLink*List, int data)
+int GetFirst(DoubleLink*)
+int GetLast(DoubleLink*)
+int GetPrev(ListNode*)
+int GetNext(ListNode*)
+ListNode*GetNode(DoubleLink*, int )
 
 // Function to create a list
 DoubleLink*Create(void)
