@@ -21,11 +21,11 @@ typedef struct {
 void print(DoubleLink*); // Function to print the list
 int size(DoubleLink*); // Function to calculate the size of the list
 int Empty(DoubleLink*); // Function to checj whether the list is empty or not
-void Remove(DoubleLink*, int); // Function to remove a node from th list
+int Remove(DoubleLink*, int); // Function to remove a node from th list
 
 // Functions to add a node to the list
 void AddBefore
-void After
+void AddAfter
 void AddLast
 void AddFirst
 
@@ -34,8 +34,5 @@ int GetFirst
 int GetLast
 int GetPrev 
 int GetNext
-<<<<<<< HEAD
 ListNode*GetNode
-=======
 ListNode*GetNode
->>>>>>> a18830ab723d456b4a33c74254188715049b7e48
