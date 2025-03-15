@@ -167,7 +167,7 @@ void AddFirst(DoubleLink*List, int data) {
     ListNode*new_node=(ListNode*)malloc(sizeof(ListNode)); // Memory allocation to create a new node
     if(new_node==NULL) {
         fprintf(stderr, "Failed to allocate memory\n");
-        return NULL; // Checking the outcome of malloc
+        return; // Checking the outcome of malloc
     }
 
     new_node->value; 
@@ -188,7 +188,7 @@ void AddLast(DoubleLink*List, int data) {
     ListNode*new_node=(ListNode*)malloc(sizeof(ListNode)); // Memory allocation for the creation of a new node
     if(new_node==NULL) {
         fprintf(stderr, "Failed to allocate memory\n");
-        return NULL; // Checking the malloc outcome
+        return; // Checking the malloc outcome
     }
 
     new_node->value=data;
