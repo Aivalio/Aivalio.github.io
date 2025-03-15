@@ -4,6 +4,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// Fucntion to initialize by default a doubly-linked list
+DoubleLink*Create(void) {
+
+    DoubleLink*List=(DoubleLink*)malloc(sizeof(DoubleLink)); // Memory allocation via the malloc function
+    if(List==NULL) {
+        fprintf(stderr, "Failed to allocate memory due to exhaustion\n");
+        return NULL; // If the allocation fails, the fucntion terminates and outputs the appropriate message
+    } else {
+
+        List->Head=NULL;
+        List->Tail=NULL;
+        return List; // The head and tail point to NULL data
+    }
+}
+
 // Function to print the list
 void print(DoubleLink*List) {
 
@@ -73,3 +88,6 @@ void Remove(DoubleLink* List, int i) {
         }
     } while(current);
 }
+
+
+

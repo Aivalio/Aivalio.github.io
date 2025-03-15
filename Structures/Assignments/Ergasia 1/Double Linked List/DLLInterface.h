@@ -30,12 +30,12 @@ void AddLast
 void AddFirst
 
 // Functions to access and control the elements of the list
-int GetFirst
-int GetLast
-int GetPrev 
-int GetNext
-ListNode*GetNode
-ListNode*GetNode
+int GetFirst(DoubleLink*List)
+int GetLast(DoubleLink*List)
+int GetPrev(ListNode*Node)
+int GetNext(ListNode*Node)
+ListNode*GetNode(DoubleLink*List, int data)
+ListNode*GetNode(DoubleLink*List, int data)
 
 // Function to create a list
 DoubleLink*Create(void)
