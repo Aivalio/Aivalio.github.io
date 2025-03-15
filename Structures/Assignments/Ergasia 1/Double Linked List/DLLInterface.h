@@ -29,10 +29,13 @@ void AddAfter
 void AddLast
 void AddFirst
 
-//Functions to access and control the elements of the list
+// Functions to access and control the elements of the list
 int GetFirst
 int GetLast
 int GetPrev 
 int GetNext
 ListNode*GetNode
 ListNode*GetNode
+
+// Function to create a list
+DoubleLink*Create(void)

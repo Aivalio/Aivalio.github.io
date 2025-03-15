@@ -34,31 +34,42 @@ int Size(DoubleLink*List) {
     ListNode*current=List->Head;
     if(current==NULL) {
         fprintf(stderr, "Please modify this pointer\n");
-        return 1;
+        return 1; 
     } else {
 
-        do {
+        do { // A loop to traverse the list nodes
 
-            length++;
-            current=current->next
-        } while(current!=NULL);
+            length++; // Increase the length counter
+            current=current->next // Move the pointer to the next node
+        } while(current!=NULL); // Prerequisite
     }
-    return length;
+    return length; // Return the length
 }
 
-void Remove(DoubleLink*List, int data) {
-
-    if(List==NULL) {
+// Function to remove a node from the list
+void Remove(DoubleLink* List, int i) {
+    
+    if (List == NULL) {
         fprintf(stderr, "Function termination\n");
         return;
     }
-    ListNode*temp=List->Head;
     
-    do {
+    ListNode* current = List->Head; // Declare a pointer to the Head initially in order to hold the node each time
 
-        if(temp->value=data) {
+     {
+        if (current->value == i) {
             
-        }
-    }
+            if (current->prev) current->prev->next = current->next;
+            else List->Head = current->next; 
 
+            if (current->next) current->next->prev = current->prev;
+            else List->Tail = current->prev;
+
+            ListNode*Deleted = current;
+            current = current->next;
+            free(Deleted);
+        } else {
+            current = current->next;
+        }
+    } while(current);
 }
