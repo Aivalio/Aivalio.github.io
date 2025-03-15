@@ -155,7 +155,7 @@ ListNode* GetNode(DoubleLink* List, int index) {
             }
             temp=temp->next; // The pointer moves on
             i++; // The variable grows
-        } while(temp!=NULL) // Necessary to execute the loop
+        } while(temp!=NULL); // Necessary to execute the loop
     }
 
     return NULL;
@@ -170,7 +170,7 @@ void AddFirst(DoubleLink*List, int data) {
         return; // Checking the outcome of malloc
     }
 
-    new_node->value; 
+    new_node->value=data; 
     new_node->next=List->Head; // The new node's next node is the Head
     new_node->prev=NULL; // The new node's previous node is NULL
 
@@ -183,6 +183,7 @@ void AddFirst(DoubleLink*List, int data) {
     
 }
 
+// Function to add an element at the end of the list
 void AddLast(DoubleLink*List, int data) {
 
     ListNode*new_node=(ListNode*)malloc(sizeof(ListNode)); // Memory allocation for the creation of a new node
@@ -197,53 +198,8 @@ void AddLast(DoubleLink*List, int data) {
     
     if(List->Tail!=NULL) {
         
-        List->Tail->next=new_node
+        List->Tail->next=new_node;
     }
 
     List->Tail=new_node; // The new node is the new Tail of the list
-
 }
-
-// Adding nodes
-void AddBefore(DoubleLink* List, ListNode* Node, int data) {
-    
-    if (List == NULL || Node == NULL) {
-        fprintf(stderr, "Function termination\n");
-        return; // Initial checks for the function
-    }
-    ListNode* new_node = (ListNode*)malloc(sizeof(ListNode)); // Memory allocation using malloc
-    if(new_node==NULL) {
-        fprintf(stderr, "Failed to allocate memory\n");
-        return NULL; // Malloc outcome check
-    }
-    new_node->value = data;
-    new_node->prev = Node->prev; // The new node's previous node is the previous node of Node
-    new_node->next = Node; // The Node is the new's node next node
-    
-    if (node->prev != NULL) node->prev->next = new_node;
-    
-    node->prev = new_node;
-}
-
-void AddAfter(DoubleLink* List, ListNode* Node, int data) {
-    
-    if (List == NULL || Node == NULL) {
-        fprintf(stderr, "Function termination\n");
-        return; // Initial function checks
-    }
-    
-    ListNode* new_node = (ListNode*)malloc(sizeof(ListNode)); // Memory allocation
-    if(new_node==NULL) {
-        fprintf(stderr, "Failed to allocate memory\n");
-        return NULL;
-    }
-    
-    new_node->value = data;
-    new_node->next = Node->next; // The new nodes's next node is the next node of Node
-    new_node->prev = Node; // The previous node of the new node is the Node
-    
-    if (Node->next != NULL) Node->next->prev = new_node;
-    
-    node->next = new_node;
-}
-

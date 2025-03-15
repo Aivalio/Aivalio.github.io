@@ -1,40 +1,65 @@
-/*This is the Interface.h file DLLInterface.h for my module*/
-#include <stdio.h>
-#include <stdlib.h>
+/* File: Interface.h */
 
-// Declaration of a list node and a variable of such type
-typedef struct listnode {
+// This is the Interface.h file for defining a doubly-linked list 
 
-    int value;
-    struct listnode*next;
-    struct listnode*prev;
-} ListNode;
+#ifndef DLLINTERFACE_H
+#define DLLINTERFACE_H
 
-// Declaration of a doubly-linked list and a variable of such type
-typedef struct {
+// Struct definition for a doubly-linked list node
+typedef struct ListNode {
+    int value;               // The value contained in the node
+    struct ListNode* next;   // Pointer to the next node
+    struct ListNode* prev;   // Pointer to the previous node
+} ListNode; // Variable for struct ListNode type
 
-    ListNode*Head;
-    ListNode*Tail;
-} DoubleLink;
+// Struct definition for the doubly-linked list
+typedef struct DoubleLink {
+    ListNode* Head;  // Pointer to the first node
+    ListNode* Tail;  // Pointer to the last node
+} DoubleLink; // Variable for struct DoubleLink type
 
-// Basic functions to handle a doubly-linked list
-void print(DoubleLink*); // Function to print the list
-int size(DoubleLink*); // Function to calculate the size of the list
-int Empty(DoubleLink*); // Function to check whether the list is empty or not
-void Remove(DoubleLink*, int ); // Function to remove a node from th list
+// Function prototypes for the doubly-linked list operations
 
-// Functions to add a node to the list
-void AddBefore(DoubleLink*, ListNode*, int);
-void AddAfter(DoubleLink* ,ListNode*, int);
-void AddLast(DoubleLink*, int) // Function to add a node at the end of the list
-void AddFirst(DoubleLink*, int) // Function to add a node at the beginning of the list
+// Create a new doubly linked list
+DoubleLink* Create(void); 
 
-// Functions to access and control the elements of the list
-int GetFirst(DoubleLink*);
-int GetLast(DoubleLink*);
-int GetPrev(ListNode*);
-int GetNext(ListNode*);
-ListNode*GetNode(DoubleLink*, int);
+// Print the contents of the list
+void print(DoubleLink* List);
 
-// Function to create a list
-DoubleLink*Create(void);
+// Check if the list is empty
+int Empty(DoubleLink* List);
+
+// Get the size of the list
+int Size(DoubleLink* List);
+
+// Remove a node at a given index
+void Remove(DoubleLink* List, int i);
+
+// Get the value of the first node
+int GetFirst(DoubleLink* List);
+
+// Get the value of the last node
+int GetLast(DoubleLink* List);
+
+// Get the value of the previous node
+int GetPrev(ListNode* Node);
+
+// Get the value of the next node
+int GetNext(ListNode* Node);
+
+// Get a node at a specific index
+ListNode* GetNode(DoubleLink* List, int index);
+
+// Add a new node at the beginning of the list
+void AddFirst(DoubleLink* List, int data);
+
+// Add a new node at the end of the list
+void AddLast(DoubleLink* List, int data);
+
+// Add a new node before a given node
+void AddBefore(DoubleLink* List, ListNode* Node, int data);
+
+// Add a new node after a given node
+void AddAfter(DoubleLink* List, ListNode* Node, int data);
+
+#endif // DLLINTERFACE_H
