@@ -48,3 +48,20 @@ size_t vector_capacity(Vector* vector) {
     return vector->capacity;
 }
 
+Vector* vector_create(size_t capacity) {
+    Vector* v = malloc(sizeof(Vector));
+    if (!v) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+    v->array = malloc(sizeof(datatype) * capacity);
+    if (!v->array) {
+        free(v);
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+    v->capacity = capacity;
+    v->size = 0;
+    return v;
+}
+
