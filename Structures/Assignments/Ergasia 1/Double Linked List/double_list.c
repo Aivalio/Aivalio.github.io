@@ -31,7 +31,7 @@ int main(void) {
     printf("Last element of the list: %d\n", GetLast(List));
 
     // Creation of a Node to use AddBefore and AddAfter
-    ListNode*Node=malloc(ListNode*)malloc(sizeof(ListNode));
+    ListNode*Node=malloc(sizeof(ListNode));
     if(Node==NULL) {
         fprintf(stderr, "Failed to allocate memory\n");
         return 1;
