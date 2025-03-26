@@ -1,6 +1,6 @@
 /*This is the test_list.c file*/
 #include "DLLInterface.h"
-#include "acutest.h"
+#include "acutest/acutest.h"
 #include <stdlib.h>
 
 void test_create() {
