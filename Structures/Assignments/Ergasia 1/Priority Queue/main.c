@@ -17,7 +17,7 @@ void PriorityQueueSort(SortingArray A) {
 // Function to return the square of a number
 int SquareOf(int n) {
     
-    return pow(n,2);
+    return n*n;
 }
 
 // Main function to test the functionality of the PQ
