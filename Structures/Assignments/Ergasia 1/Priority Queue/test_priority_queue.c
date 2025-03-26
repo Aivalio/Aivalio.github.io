@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "PQInterface.h"
+#include "acutest.h"
 
 void test_InitializeQueue() {
     PriorityQueue PQ = InitializeQueue();
