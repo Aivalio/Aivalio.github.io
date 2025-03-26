@@ -1,4 +1,14 @@
-
+/*File:sortlist.c*/
+ //Code author: Nikos Aivaliotis
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+ // Definition of a list node and a pointer to it
+ typedef struct listnode {
+     
+     int value;
+     struct listnode* next;
+ } *List;
 
 // Merging of two lists into a third one and return of a pointer to it
  List mergeSortedLists(List l1, List l2) {
