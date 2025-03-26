@@ -12,7 +12,8 @@
 
 // Merging of two lists into a third one and return of a pointer to it
  List mergeSortedLists(List l1, List l2) {
-     struct listnode dummy;
+     
+    struct listnode dummy;
      List tail = &dummy;
      dummy.next = NULL;
  

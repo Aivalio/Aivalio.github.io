@@ -12,7 +12,8 @@
  
  // Function to insert a node at the beginning of my list, using a pointer to pointer to traverse the list
  void insert_front(List *head, int new_value) {
-     List new_node = (List)malloc(sizeof(struct listnode));
+     
+    List new_node = (List)malloc(sizeof(struct listnode));
      if (new_node == NULL) {
          fprintf(stderr, "Failed to allocate memory\n");
          exit(EXIT_FAILURE); //If memory allocation fails, the program exits and gives an error message
