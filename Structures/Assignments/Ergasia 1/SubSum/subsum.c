@@ -3,29 +3,30 @@
  
  #include <stdio.h>
  #include <stdlib.h>
+#include <stdint.h>
  
- // Συνάρτηση για την έυρεση υποσυνόλου ενός συνόλου ακεραίων
+ // Function to find the powerset
  int subsetSum(int *array, int value, int sum) {
-     if (sum == 0) // Αν δε βρω κανένα υποσύνολο, επιστρέφω ως default τιμή το 0
+     if (sum == 0) // Default case
          return 1;
-     if (value == 0) // Αν εξέτασα όλα τα στοιχεία και πάλι δε βρήκα υποσύνολο
+     if (value == 0) // No set found after check
          return 0;
  
-     // Δυναμική επιλογή: να συμπεριλάβω το τελευταίο στοιχείο ή όχι
+     // Choice: include or exclude the element
      return subsetSum(array, value - 1, sum) || subsetSum(array, value - 1, sum - array[value - 1]);
  }
  
- // Κύρια συνάρτηση με παράδειγμα εκτέλεσης
+ // Main function for simulation
  int main(void) {
      
-     int array[] = {-76, 90, 108, 45, 76, 87}; // Ορίζω έναν πίνακα ακεραίων και τον αρχικοποιώ
-     int size = sizeof(array) / sizeof(array[0]);
+     int array[] = {-76, 90, 108, 45, 76, 87}; // Define an array and initialize it with integers
+     int size = sizeof(array) / sizeof(array[0]); // The size of the array
  
      if (subsetSum(array, size, 0))
          printf("Υπάρχει υποσύνολο με άθροισμα 0\n");
      else
          fprintf(stderr, "Δεν υπάρχει υποσύνολο με άθροισμα 0\n");
-         return 1; // Αν δε βρω υποσύνολο, το πράγραμμα τερματίζει με κδωικό εξόδου 1 και κατάλληλο μήνυμα λάθους
+         return 1; // The program exits with code 1 and a proeper error message
  
-     return 0; // Επιτυχής τερματισμός προγράμματος
+     return 0; // Successful program termination
  }
