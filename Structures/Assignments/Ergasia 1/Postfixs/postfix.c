@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "StackInterface.h"
 
 #define MAX_EXPR_SIZE 100
@@ -13,6 +14,7 @@ int precedence(char op) {
 }
 
 void infixToPostfix(char* infix, char* postfix) {
+    
     Stack operators;
     Initialize(&operators);
     int j = 0;
