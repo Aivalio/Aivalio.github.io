@@ -1,8 +1,7 @@
 /*File:subsum.c*/
- //Code author: Nikos Aivaliotis
- 
- #include <stdio.h>
- #include <stdlib.h>
+
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
  
  // Function to find the powerset
@@ -23,9 +22,9 @@
      int size = sizeof(array) / sizeof(array[0]); // The size of the array
  
      if (subsetSum(array, size, 0))
-         printf("Υπάρχει υποσύνολο με άθροισμα 0\n");
+         printf("Failure\nn");
      else
-         fprintf(stderr, "Δεν υπάρχει υποσύνολο με άθροισμα 0\n");
+         fprintf(stderr, "No set with sum equal to zero\n");
          return 1; // The program exits with code 1 and a proeper error message
  
      return 0; // Successful program termination
