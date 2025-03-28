@@ -2,8 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
- 
+
  // Function to find the powerset
  int subsetSum(int *array, int value, int sum) {
      if (sum == 0) // Default case
