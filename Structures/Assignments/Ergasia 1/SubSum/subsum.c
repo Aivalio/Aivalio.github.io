@@ -17,11 +17,11 @@
  // Main function for simulation
  int main(void) {
      
-     int array[] = {-76, 90, 108, 45, 76, 87}; // Define an array and initialize it with integers
-     int size = sizeof(array) / sizeof(array[0]); // The size of the array
+     int sumarray[] = {-76, 90, 108, 45, 76, 87}; // Define an array and initialize it with integers
+     int capacity = sizeof(sumarray) / sizeof(sumarray[0]); // The size of the array
  
-     if (subsetSum(array, size, 0))
-         printf("Failure\nn");
+     if (subsetSum(sumarray, capacity, 0))
+         fprintf(stderr, "Failure\nn");
      else
          fprintf(stderr, "No set with sum equal to zero\n");
          return 1; // The program exits with code 1 and a proeper error message
