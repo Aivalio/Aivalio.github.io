@@ -1,5 +1,4 @@
 /*File:list.c*/
-//Code author: Nikos Aivaliotis
  #include <stdio.h>
  #include <stdlib.h>
  
