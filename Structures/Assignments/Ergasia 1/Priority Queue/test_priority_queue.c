@@ -1,56 +1,41 @@
-/* Unit Test for insertion.c */
+#include <stdio.h>
 #include "acutest.h"
 #include "PQInterface.h"
-#include <stdlib.h>
 
-void test_insert_front() {
-    
-    List head = NULL;
-    insert_front(&head, 10);
-    insert_front(&head, 20);
-    insert_front(&head, 30);
-    
-    TEST_CHECK(head != NULL);
-    TEST_CHECK(head->value == 30);
-    TEST_CHECK(head->next->value == 20);
-    TEST_CHECK(head->next->next->value == 10);
-    
-    // Free allocated memory
-    while (head) {
-        
-        List temp = head;
-        head = head->next;
-        free(temp);
-    }
+void test_initialize_queue(void) {
+    PriorityQueue pq = InitializeQueue();
+    TEST_CHECK(pq != NULL);
+    TEST_CHECK(Empty(pq) == 1);
 }
 
-void test_mysortlist() {
+void test_insert_and_remove(void) {
+    PriorityQueue pq = InitializeQueue();
+    TEST_CHECK(Empty(pq));
     
-    List head = NULL;
-    insert_front(&head, 10);
-    insert_front(&head, 5);
-    insert_front(&head, 20);
-    insert_front(&head, 15);
+    Insert(5, pq);
+    Insert(3, pq);
+    Insert(8, pq);
     
-    head = mysortlist(head);
+    TEST_CHECK(!Empty(pq));
+    TEST_CHECK(Remove(pq) == 8);
+    TEST_CHECK(Remove(pq) == 5);
+    TEST_CHECK(Remove(pq) == 3);
+    TEST_CHECK(Empty(pq));
+}
+
+void test_full_queue(void) {
+    PriorityQueue pq = InitializeQueue();
     
-    TEST_CHECK(head != NULL);
-    TEST_CHECK(head->value == 5);
-    TEST_CHECK(head->next->value == 10);
-    TEST_CHECK(head->next->next->value == 15);
-    TEST_CHECK(head->next->next->next->value == 20);
-    TEST_CHECK(head->next->next->next->next == NULL);
-    
-    // Free allocated memory
-    while (head) {
-        List temp = head;
-        head = head->next;
-        free(temp);
+    for (int i = 0; i < MAXCOUNT; i++) {
+        Insert(i, pq);
     }
+    
+    TEST_CHECK(Full(pq));
 }
 
 TEST_LIST = {
-    {"test_insert_front", test_insert_front},
-    {"test_mysortlist", test_mysortlist},
-    {NULL, NULL}
+    {"Initialize Queue", test_initialize_queue},
+    {"Insert and Remove", test_insert_and_remove},
+    {"Full Queue", test_full_queue},
+    {NULL, NULL} 
 };

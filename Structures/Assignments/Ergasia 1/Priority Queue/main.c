@@ -1,7 +1,6 @@
-/*This is the main.c file*/
+
 #include <stdio.h>
 #include "PQInterface.h"
-#include <math.h>
 
 typedef PQItem SortingArray[MAXCOUNT];
 
@@ -14,7 +13,7 @@ void PriorityQueueSort(SortingArray A) {
     for (int i = MAXCOUNT - 1; i >= 0; --i) A[i] = Remove(PQ);
 }
 
-// Function to return the square of a number
+// Calculation of the sqaure of a number
 int SquareOf(int n) {
     
     return n*n;
@@ -23,18 +22,18 @@ int SquareOf(int n) {
 // Main function to test the functionality of the PQ
 int main(void) {
     
-    SortingArray A;
+    SortingArray B;
     
     for (int i = 0; i < 10; ++i) {
-        A[i] = SquareOf(3 * i - 13);
-        printf("%d ", A[i]);
+        B[i] = SquareOf(3 * i - 13);
+        printf("%d ", B[i]);
     }
     printf("\n"); // Filling of the queue
 
-    PriorityQueueSort(A); // Sorting of the queue
+    PriorityQueueSort(B); // Sorting of the queue
 
     for (int i = 0; i < 10; ++i) {
-        printf("%d ", A[i]);
+        printf("%d ", B[i]);
     }
     printf("\n"); // Printing of the queue
     
