@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "faulty_stack.h"
-#include "acutest"
+#include "acutest/acutest.h"
 
 void test_stack_create(void){
     Stack *s = stack_init();
