@@ -13,3 +13,4 @@ int stack_peek(Stack *s);
 Stack* stack_push(Stack *s,int data);
 Stack* stack_merge(Stack *s1,Stack *s2);
 void stack_destroy(Stack *s);
+
