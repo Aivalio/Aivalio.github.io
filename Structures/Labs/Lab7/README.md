@@ -230,3 +230,12 @@ free(bf);
 
 Χρονική λήξη δεδομένων (time decay filters)
 
+🧠 Τι κάνει το κάθε μέρος:
+Στοιχείο	Περιγραφή
+bloom_filter_create	Δέχεται μέγεθος (σε bits) και δημιουργεί ένα φίλτρο με όλα τα bits 0.
+bloom_filter_set_bit	Θέτει ένα bit σε 1, που αντιστοιχεί σε ένα από τα hash.
+bloom_filter_get_bit	Ελέγχει αν το bit είναι 0 ή 1.
+bloom_filter_insert	Υπολογίζει τα 3 hash του πελάτη και θέτει τα αντίστοιχα bits.
+bloom_filter_check	Ελέγχει αν όλα τα bits είναι 1 → πιθανή ύπαρξη (όχι σίγουρη).
+bloom_filter_destroy	Αποδεσμεύει τη δυναμικά δεσμευμένη μνήμη.
+
