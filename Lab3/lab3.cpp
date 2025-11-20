@@ -235,7 +235,7 @@ public:
 // - Lifetime tracing
 // - Adding Isoforms to a Gene
 // ============================================================
-int main() {
+int main(void) {
     cout << "=== LAB 03: CLASS COMPOSITION DEMO ===\n" << endl;
 
     // 1. Create Gene
